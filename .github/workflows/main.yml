@@ -1,0 +1,76 @@
+name: Extreme Power Run sharp Workflow
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/30 * * * *'  # Runs every 5 minutes for high frequency
+
+jobs:
+  # Matrix strategy for extreme attacks
+  extreme_attacks:
+    runs-on: ubuntu-latest  # Use 'self-hosted' for higher performance if available
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Set permissions for binaries
+        run: chmod +x sharp
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install required packages
+        run: |
+          pip install telebot flask aiogram python-telegram-bot pymongo aiohttp
+
+      - name: Run sharp.py with extreme power settings
+        run: python3 sharp.py --power core_max
+
+  # Job for ultra high-power attacks with distinct flags
+  ultra_high_power_attack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Set permissions for binaries
+        run: chmod +x sharp
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install required packages
+        run: |
+          pip install telebot flask aiogram python-telegram-bot pymongo aiohttp
+
+      - name: Run sharp.py with ultra-high power settings
+        run: python3 sharp.py --attack-type ultra --power extreme --core max
+
+  # High-performance attack variation
+  max_performance_attack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Set permissions for binaries
+        run: chmod +x sharp
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install required packages
+        run: |
+          pip install telebot flask aiogram python-telegram-bot pymongo aiohttp
+
+      - name: Run sharp.py with max performance settings
+        run: python3 sharp.py --attack-type max --power core_max --i
+        ntensity highest
